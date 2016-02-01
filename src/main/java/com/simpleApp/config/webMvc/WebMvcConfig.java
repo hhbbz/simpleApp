@@ -24,13 +24,15 @@
 
 package com.simpleApp.config.webMvc;
 
+import com.simpleApp.Interceptor.UserSessionInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * @author liuzh_3nofxnp
- * @since 2015-12-19 16:16
+ * Created by 黄柏樟 on 2016/2/1.
+ * @Explain: 配置springMVC
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
@@ -38,6 +40,16 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
+
+    /**
+     * 配置拦截器
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry){
+        registry.addInterceptor(new UserSessionInterceptor()).addPathPatterns("/user/**");
+        registry.addInterceptor(new UserSessionInterceptor()).excludePathPatterns("/user/add" , "/user/login" , "/user/index");
     }
 
 }
