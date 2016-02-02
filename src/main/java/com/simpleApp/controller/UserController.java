@@ -35,12 +35,13 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("test")
-    public String test (){
-        return "index" ;
+    @RequestMapping("hello")
+    public String hello (){
+        System.out.println("user/hello");
+        return "hello" ;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(value = "/getUsers" , method= RequestMethod.GET)
     @ResponseBody
     public List<User> getUsers(){
         List<User> list=new ArrayList<User>();
