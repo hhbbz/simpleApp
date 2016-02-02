@@ -27,18 +27,22 @@ package com.simpleApp.config.webMvc;
 import com.simpleApp.Interceptor.UserSessionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Created by 黄柏樟 on 2016/2/1.
  * @Explain: 配置springMVC
  */
+@EnableWebMvc
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+
+    /**
+     * 配置静态资源文件路径
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
@@ -55,13 +59,22 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
+     * 设置一个默认处理程序
+     * @param configurer
+     */
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    /**
      * springMVC视图路径
      * @return
      */
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("templates/");
+        resolver.setPrefix("/templates/");
         resolver.setSuffix(".jsp");
         return resolver;
     }

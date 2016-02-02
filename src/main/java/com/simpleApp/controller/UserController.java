@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,13 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("hello")
-    public String hello (){
-        System.out.println("user/hello");
-        return "hello" ;
+    @RequestMapping("/")
+    public ModelAndView hello (){
+        return new ModelAndView("hello")
+                    .addObject("name" , "hhbbz");
     }
 
-    @RequestMapping(value = "/getUsers" , method= RequestMethod.GET)
+    @RequestMapping(value="user/getUsers" ,method= RequestMethod.GET)
     @ResponseBody
     public List<User> getUsers(){
         List<User> list=new ArrayList<User>();
@@ -56,7 +57,7 @@ public class UserController {
         return list;
     }
 
-    @RequestMapping(value="/{name}",method=RequestMethod.GET)
+    @RequestMapping(value="user/{name}",method=RequestMethod.GET)
     @ResponseBody
     public User getUserById(@PathVariable String name){
         User user=new User();
