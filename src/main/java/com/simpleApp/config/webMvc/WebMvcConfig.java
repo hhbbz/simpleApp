@@ -25,10 +25,8 @@
 package com.simpleApp.config.webMvc;
 
 import com.simpleApp.Interceptor.UserSessionInterceptor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Created by 黄柏樟 on 2016/2/1.
@@ -68,15 +66,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * springMVC视图路径
+     * 使用jsp做视图层时springMVC视图路径
      * @return
-     */
+
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/templates/");
+        resolver.setPrefix("WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
-    }
+    }*/
 
 }
