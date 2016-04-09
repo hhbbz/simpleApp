@@ -45,10 +45,10 @@ public class Country {
      */
     private String countrycode;
 
-    @Transient
+    @Transient  //忽略改字段
     private Integer page = 1;
 
-    @Transient
+    @Transient //忽略改字段
     private Integer rows = 10;
 
     /**
