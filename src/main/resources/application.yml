@@ -34,6 +34,15 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+
+#开启freemarker作为模板引擎
+#        mvc:
+#            view:
+#                prefix: /templates/
+#                suffix: .ftl
+#            freemarker:
+#                cache: false
+#                request-context-attribute: request
 #以下属性不可用
 #mybatis:
 #    pagehelper:
