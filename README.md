@@ -1,3 +1,2 @@
 #simpleApp
-##spring boot + mybatis ´î½¨µÄÖĞĞ¡ĞÍÓ¦ÓÃ
-github 
+##spring boot + mybatis æ„å»ºä¸­å°å‹åº”ç”¨
